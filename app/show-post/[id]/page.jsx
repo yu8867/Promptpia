@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { format } from "timeago.js";
 import Image from "next/image";
 
-const ShowPost = ({ params }: { params: { id: String } }) => {
+const ShowPost = ({ params }) => {
   const [post, setPost] = useState({});
   const [copied, setCopied] = useState("");
 

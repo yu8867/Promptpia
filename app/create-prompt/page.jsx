@@ -6,25 +6,16 @@ import { useRouter } from "next/navigation";
 
 import Form from "@components/Form";
 
-interface session {
-  user: {
-    id: string;
-    name?: string | null;
-    email?: string | null;
-    image?: string | null;
-  };
-}
-
 const CreatePrompt = () => {
   const router = useRouter();
-  const { data: session } = useSession()!;
+  const { data: session } = useSession();
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState({
     prompt: "",
     tag: "",
   });
 
-  const createPrompt = async (e: any) => {
+  const createPrompt = async (e) => {
     e.preventDefault();
     setSubmitting(true);
 
@@ -34,7 +25,7 @@ const CreatePrompt = () => {
       setSubmitting(false);
       return;
     }
-    const user = session?.user as { id: string } & typeof session.user;
+    const user = session?.user & session.user;
 
     try {
       if (user?.id) {
